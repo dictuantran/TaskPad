@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Home from './home/Home';
 import Nav from './header/Nav';
@@ -11,7 +12,7 @@ class App extends Component {
         super(props);        
     }    
 
-    render() {
+    render() {        
         return (
             <div className="container">
                 <ToastContainer />
@@ -22,10 +23,12 @@ class App extends Component {
                         exact
                         render={props => <Home {...props} />}
                     />
-
-                    <Route 
-                        path="/reposts"
-                        render={props => <ReportsPage {...props} />}
+                   
+                    <Route
+                        path="/reports"
+                        render={props =>
+                            <ReportsPage auth={this.auth} {...props} />
+                        }
                     />
                 </div>
             </div>
