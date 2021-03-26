@@ -25,7 +25,10 @@ func (r *ReportController) Init(db *sql.DB) {
 
 // GetReports method
 func (r *ReportController) GetReports(ctx *gin.Context) {
+	ctx.Set("userid", "1")
+
 	useridi, exists := ctx.Get("userid")
+
 	if !exists {
 		ctx.JSON(400, gin.H{
 			"error": "userid not found in request context",

@@ -12,10 +12,10 @@ var db *sql.DB
 
 const (
 	host     = "localhost"
-	port     = 5432
+	port     = 59236
 	user     = "postgres"
 	password = "1234567"
-	dbname   = "taskpad"
+	dbname   = "TaskPad"
 )
 
 // GetDB method returns a DB instance

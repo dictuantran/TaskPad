@@ -27,7 +27,6 @@ func (r *ReportRepository) GetReports(userid string) ([]models.Report, error) {
     select id, userid, title, type from reports
     where userid = $1
   `
-
 	rows, err := r.db.Query(query, userid)
 	if err != nil {
 		return nil, err
