@@ -1,36 +1,25 @@
 import React, { Component } from 'react';
-import PieChart from './PieChart';
-import ReportViewToolbar from './ReportViewToolbar';
+import ReportView from './ReportView';
 
-class ReportView extends Component {
-    renderByReportType() {
-        if(this.props.report.type === 'pie') {
-            return <PieChart report={this.props.report} />
+class ReportsView extends Component {
+    renderReports() {    
+        if (this.props.reports != undefined) {
+            return this.props.reports.map(report => {
+                return (
+                    <ReportView 
+                        key={report.id}
+                        report={report}                    
+                    />
+                );
+            })
         }
 
-        return (
-            <span>
-                style={{
-                    color: 'red',
-                    fontStyle: 'bold',
-                    padding: '1em',
-                    margin: '1em'
-                }}
-                Unsupported repot type {this.props.report.type}{' '}
-            </span>
-        )
+        return "";
     }
 
     render() {
-        return (
-            <div className="report-view">
-                <ReportViewToolbar 
-                    report={this.props.report}
-                />
-                <div className="report-view__chart">{this.renderByReportType()}</div>
-            </div>
-        )
+        return <div className="reports-view">{this.renderReports()}</div>;
     }
 }
 
-export default ReportView;
+export default ReportsView;

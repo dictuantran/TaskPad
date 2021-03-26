@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Toolbar from './Toolbar';
 import httpApi from '../utils/http-api';
 import ReportCreateView from './report-create/ReportCreateView';
-import ReportView from './report-display/ReportView';
+import ReportsView from './report-display/ReportsView';
 
 class ReportsPage extends Component {
     state = {
@@ -20,8 +20,7 @@ class ReportsPage extends Component {
             loading: true
         });        
 
-        httpApi.getWithErrorHandled(`/api/reports`).then(reports => {       
-            console.log('api test')     
+        httpApi.getWithErrorHandled(`/api/reports`).then(reports => {                  
             this.setState({                
                 reports: reports,
                 loading: false
@@ -38,11 +37,11 @@ class ReportsPage extends Component {
                 />
 
                 {this.state.showReportCreate ? (
-                    <ReportCreateView/>
+                    <ReportCreateView />
                 ) : null }
 
                 {this.state.loading ? (
-                    <ReportView 
+                    <ReportsView 
                         reports={this.state.reports}                        
                     />
                 ) 
