@@ -6,6 +6,7 @@ import (
 
 	"github.com/dictuantran/TaskPad/api/controllers"
 	"github.com/dictuantran/TaskPad/api/util"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -69,9 +70,11 @@ func main() {
 
 	router.GET("/api/reports", reportController.GetReports)
 
+	router.Use(cors.Default())
+
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "8081"
 		log.Printf("Defaulting to port %s", port)
 	}
 	router.Run(":" + port)

@@ -31,8 +31,7 @@ var jwtMiddleWare *jwtmiddleware.JWTMiddleware
 
 func init() {
 	jwtMiddleWare = jwtmiddleware.New(jwtmiddleware.Options{
-		ValidationKeyGetter: validationKeyGetter,
-		SigningMethod:       jwt.SigningMethodRS256,
+		SigningMethod: jwt.SigningMethodRS256,
 	})
 }
 

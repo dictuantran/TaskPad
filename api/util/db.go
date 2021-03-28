@@ -12,7 +12,7 @@ var db *sql.DB
 
 const (
 	host     = "localhost"
-	port     = 59236
+	port     = 49880
 	user     = "postgres"
 	password = "1234567"
 	dbname   = "TaskPad"
@@ -22,8 +22,8 @@ const (
 func GetDB() (*sql.DB, error) {
 	//connectionString := "user=madhanganesh dbname=taskpad sslmode=disable"
 	//connectionString := os.Getenv("POSTGRES_CONNECTION_STRING")
-	connectionString := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname)
+	connectionString := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
+		user, password, dbname)
 
 	if connectionString == "" {
 		return nil, errors.New("'POSTGRES_CONNECTION_STRING' environment variable not set")

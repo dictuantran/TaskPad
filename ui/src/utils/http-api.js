@@ -33,18 +33,22 @@ class HttpApi {
 
     async request(method, url, data) {
         try {            
-            var apiURL = 'http://localhost:8080/' + url;
-
+            var apiURL = 'http://localhost:8081' + url;            
+/*
             const response = await axios({
                 method: method,
                 url: apiURL,
-                data: data,
-                crossDemain: true,
+                data: data,  
+                mode: 'no-cors', 
+                withCredentials: true,             
                 headers: {
-                    'content-type': 'application/json',                    
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',                
                     //Authorization: `Bearer ${this.auth.getAccessToken()}`
-                }                
-            })
+                }                        
+            })            
+*/
+            const response = await axios.get(apiURL);
 
             return response.data;
         } catch (err) {
