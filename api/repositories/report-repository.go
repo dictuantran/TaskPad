@@ -56,11 +56,10 @@ func (r *ReportRepository) CreateReport(report models.Report) (models.Report, er
 	spec := string(specBytes)
 
 	statement := `
-    insert into reports(userid, title, type, spec)
-    values ($1, $2, $3, $4)
-    returning id
-  `
-
+		insert into reports(userid, title, type, spec)
+		value($1, $2, $3, $4)
+		returning id
+	`
 	var id int64
 	err = r.db.QueryRow(statement, report.UserID, report.Title, report.Type, spec).Scan(&id)
 	if err != nil {

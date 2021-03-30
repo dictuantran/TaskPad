@@ -58,6 +58,7 @@ func (r *ReportController) CreateReport(ctx *gin.Context) {
 	var report models.Report
 	decoder := json.NewDecoder(ctx.Request.Body)
 	defer ctx.Request.Body.Close()
+
 	err := decoder.Decode(&report)
 	if err != nil {
 		log.Printf("Error in decoding the request body: %+v\n", err)
@@ -66,14 +67,13 @@ func (r *ReportController) CreateReport(ctx *gin.Context) {
 		})
 		return
 	}
-	log.Printf("Received creation of report: %+v\n", report)
+	log.Printf("Received creation of report: %+v\n", report.Title)
 
 	if report.Title == "" {
 		log.Printf("Report title is invalid with value %s\n", report.Title)
 		ctx.JSON(400, gin.H{
 			"error": "report title should not be empty",
 		})
-		return
 	}
 
 	if report.Type != "pie" && report.Type != "line" {

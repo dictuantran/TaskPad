@@ -12,7 +12,7 @@ var db *sql.DB
 
 const (
 	host     = "localhost"
-	port     = 49880
+	port     = 64076
 	user     = "postgres"
 	password = "1234567"
 	dbname   = "TaskPad"
